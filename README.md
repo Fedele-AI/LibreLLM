@@ -4,14 +4,15 @@ A small language model implementation using Mamba-2 architecture, trained on the
 
 ## Overview
 
-This project implements a **pure PyTorch** version of Mamba-2, a state-space model that serves as an efficient alternative to Transformers. The model works on CPU (no CUDA required) and uses only open-source components.
+This project implements a **pure PyTorch** version of Mamba-2, a state-space model that serves as an efficient alternative to Transformers. The model automatically detects and uses CUDA GPUs when available, or runs on CPU. Uses only open-source components.
 
 ### Key Features
-- ✅ Pure PyTorch implementation (CPU compatible)
+- ✅ Pure PyTorch implementation (no custom CUDA kernels needed)
+- ✅ **Automatic GPU detection** - uses CUDA when available, CPU otherwise
 - ✅ Mamba-2 architecture with state-space models
 - ✅ Trained on TinyStories dataset (~2GB)
 - ✅ ~10M parameters (small, efficient model)
-- ✅ No CUDA/GPU required (works on macOS/Linux/Windows)
+- ✅ Works on CPU or GPU (macOS/Linux/Windows)
 
 ## Model Architecture
 
@@ -23,19 +24,29 @@ This project implements a **pure PyTorch** version of Mamba-2, a state-space mod
 
 ## Setup
 
-The project uses UV virtual environment (already created):
+### Installation
 
 ```bash
-# Activate the virtual environment (already done)
-source .venv/bin/activate.fish
+# 1. Create and activate UV virtual environment
+uv venv
+source .venv/bin/activate.fish  # or .venv/bin/activate for bash
 
-# All dependencies are already installed:
-# - torch
-# - transformers
-# - datasets
-# - tqdm
-# - numpy
+# 2. Install dependencies
+uv pip install -r requirements.txt
+
+# 3. Verify installation (and check for GPU)
+python check_cuda.py
 ```
+
+**For CUDA GPU systems**: See [INSTALL_CUDA.md](INSTALL_CUDA.md) for GPU-specific optimizations.
+
+### Dependencies
+- torch (automatically installs with CUDA support if available)
+- transformers
+- datasets
+- tqdm
+- numpy
+- einops
 
 ## Project Structure
 
@@ -61,18 +72,23 @@ python train.py
 Training configuration:
 - **Dataset**: TinyStories (10% subset, ~50K samples, ~2GB download)
 - **Epochs**: 3
-- **Batch Size**: 16
+- **Batch Size**: 16 (increase to 32-64 for GPU)
 - **Learning Rate**: 3e-4 with warmup and cosine decay
 - **Max Steps**: 5,000
-- **Estimated Time**: 1-2 hours on CPU, 15-30 min on GPU
+- **Estimated Time**: 
+  - **CPU**: 1-2 hours
+  - **CUDA GPU**: 15-30 minutes ⚡
 
 The training will:
+- **Automatically detect and use GPU** if available
 - Download TinyStories dataset (small, high-quality stories)
 - Tokenize the data
 - Train the model with validation
 - Save checkpoints every 1000 steps
 - Save the best model based on validation loss
 - Generate sample text during training
+
+**GPU Optimization**: For CUDA systems, see [INSTALL_CUDA.md](INSTALL_CUDA.md) for recommended config adjustments (larger batch size, model size, etc.).
 
 ### 2. Inference
 
