@@ -34,51 +34,16 @@ class Config:
     datasets_config = [
         {
             "name": "roneneldan/TinyStories",
-            "split": "train[:8%]",
+            "split": "train[:5%]",
             "text_column": "text",
             "description": "Children's stories with simple, coherent English"
         },
         {
-            "name": "Skylion007/openwebtext",
-            "split": "train[:2%]",
+            "name": "HuggingFaceFW/fineweb-edu",
+            "config": "sample-10BT",
+            "split": "train[:0.1%]",
             "text_column": "text",
-            "description": "High-quality web text from Reddit"
-        },
-        {
-            "name": "wikipedia",
-            "config": "20220301.en",
-            "split": "train[:1%]",
-            "text_column": "text",
-            "description": "Wikipedia articles for factual English",
-            "filter_keywords": ["Georgia", "American Revolution", "colonial", "founding fathers", "Constitution", "Bill of Rights"]
-        },
-        {
-            "name": "sedthh/gutenberg_english",
-            "split": "train[:5%]",
-            "text_column": "TEXT",
-            "description": "Project Gutenberg books - classic literature and historical texts",
-            "filter_keywords": ["history", "philosophy", "government", "liberty", "revolution", "politics"]
-        },
-        {
-            "name": "dell-research-harvard/AmericanStories",
-            "config": "all_years",
-            "split": "train[:0.5%]",
-            "text_column": "article",
-            "description": "Historical US newspapers - American history, politics, and culture"
-        },
-        {
-            "name": "pile-of-law/pile-of-law",
-            "subset": "founding_docs",
-            "split": "train",
-            "text_column": "text",
-            "description": "Letters from U.S. founding fathers and constitutional documents"
-        },
-        {
-            "name": "pile-of-law/pile-of-law",
-            "subset": "constitutions",
-            "split": "train[:50%]",
-            "text_column": "text",
-            "description": "World constitutions including US Constitution and state constitutions"
+            "description": "High-quality educational web text"
         },
         {
             "name": "custom_historical",
@@ -105,7 +70,12 @@ class Config:
                 Relations with Native American tribes were complex. The Creek and Cherokee nations inhabited Georgia before European settlement. 
                 Oglethorpe initially maintained peaceful relations, signing treaties with Creek leaders. However, as the colony grew, conflicts 
                 increased over land. After American independence, pressure mounted for Native American removal. The Indian Removal Act of 1830 
-                led to the forced relocation of Cherokee and other tribes along the Trail of Tears in the 1830s, a tragic chapter in American history.""",
+                led to the forced relocation of Cherokee and other tribes along the Trail of Tears in the 1830s, a tragic chapter in American history.
+                
+                During the American Revolution, Georgia saw significant military action. The Siege of Savannah in 1779 was one of the bloodiest 
+                battles of the war. British forces captured Savannah in 1778 and held it until 1782. Patriots and French forces attempted to 
+                recapture the city but failed. Many Georgians remained loyal to the Crown, creating internal divisions. After the war, Georgia 
+                was economically devastated but quickly recovered through agriculture, particularly cotton cultivation.""",
                 
                 # Second Amendment - Expanded
                 """The Second Amendment to the United States Constitution reads: 'A well regulated Militia, being necessary to the security of a free State, 
@@ -125,7 +95,11 @@ class Config:
                 James Madison, the primary author of the Bill of Rights, drew inspiration from state constitutions and Anti-Federalist concerns. 
                 Virginia's Declaration of Rights proclaimed that 'a well regulated militia, composed of the body of the people, trained to arms, 
                 is the proper, natural, and safe defense of a free state.' Pennsylvania's constitution affirmed the people's right to bear arms 
-                for defense of themselves and the state. These state provisions influenced the language of the Second Amendment.""",
+                for defense of themselves and the state. These state provisions influenced the language of the Second Amendment.
+                
+                The debate over the Second Amendment continues today. Supporters emphasize individual liberty and self-defense. They argue the 
+                amendment protects citizens from government tyranny and criminal threats. Critics focus on public safety and gun violence prevention. 
+                The Supreme Court has recognized that the right is not unlimited and is subject to reasonable regulations.""",
                 
                 # John Locke - Expanded
                 """John Locke's Two Treatises of Government, published in 1689, is a foundational text of classical liberalism and influenced the 
@@ -145,7 +119,11 @@ class Config:
                 When a person works the land or gathers fruit, they make it their own. This theory justified private property and limited 
                 government interference in economic affairs. Locke also emphasized that government power must be limited and divided. He 
                 distinguished between legislative, executive, and federative powers. The legislature makes laws, the executive enforces them, 
-                and the federative power handles foreign affairs. This separation prevents tyranny by dividing authority among different branches.""",
+                and the federative power handles foreign affairs. This separation prevents tyranny by dividing authority among different branches.
+                
+                Locke's influence extended beyond political theory to education and religious toleration. He advocated for education that 
+                develops both character and intellect. His Letter Concerning Toleration argued for religious freedom and separation of 
+                church and state, ideas that profoundly influenced American constitutional thought.""",
                 
                 # More Enlightenment Thought
                 """The Enlightenment period produced numerous works that shaped revolutionary thought in America. Philosophers emphasized reason, 
@@ -161,7 +139,11 @@ class Config:
                 These Enlightenment ideas, combined with English common law traditions and the rights of Englishmen, formed the intellectual 
                 foundation for the American Revolution. Colonial thinkers like Samuel Adams, Thomas Paine, and Patrick Henry drew upon these 
                 principles to justify independence from British rule. Thomas Paine's 'Common Sense' (1776) applied Enlightenment reasoning to 
-                advocate for American independence, arguing that hereditary monarchy violated natural rights and common sense.""",
+                advocate for American independence, arguing that hereditary monarchy violated natural rights and common sense.
+                
+                The Enlightenment also emphasized empiricism and scientific method. Francis Bacon's inductive reasoning and Isaac Newton's 
+                laws of motion demonstrated that natural phenomena could be understood through observation and reason. This scientific 
+                spirit extended to political philosophy, with thinkers seeking to discover natural laws governing human society.""",
                 
                 # Declaration of Independence
                 """The Declaration of Independence, adopted on July 4, 1776, is one of the most important documents in American history. 
@@ -174,7 +156,11 @@ class Config:
                 'life, liberty, and property' into 'life, liberty, and the pursuit of happiness.' The document lists grievances against 
                 King George III to justify independence. These grievances included imposing taxes without consent, depriving colonists of 
                 trial by jury, and maintaining standing armies without colonial approval. The Declaration asserted the right of revolution: 
-                when a government becomes destructive of the people's rights, it is their right and duty to alter or abolish it.""",
+                when a government becomes destructive of the people's rights, it is their right and duty to alter or abolish it.
+                
+                The Declaration's assertion that all men are created equal was revolutionary for its time, though its promise would take 
+                centuries to fulfill. The document inspired democratic movements worldwide and remains a powerful statement of human rights 
+                and self-determination. Its principles continue to guide American democracy and inspire people seeking freedom globally.""",
                 
                 # Constitutional Convention
                 """The Constitutional Convention met in Philadelphia from May to September 1787 to address weaknesses in the Articles of 
@@ -190,11 +176,15 @@ class Config:
                 Ratification of the Constitution required approval by nine states. Federalists, including Alexander Hamilton, James Madison, 
                 and John Jay, wrote The Federalist Papers to argue for ratification. Anti-Federalists opposed the Constitution, fearing it 
                 created too strong a central government and lacked a bill of rights. The promise to add a bill of rights helped secure 
-                ratification. James Madison drafted the amendments that became the Bill of Rights, ratified in 1791.""",
+                ratification. James Madison drafted the amendments that became the Bill of Rights, ratified in 1791.
+                
+                The Constitution created a living document capable of adaptation through amendment while preserving fundamental principles. 
+                Its system of federalism balances power between national and state governments. The separation of powers and checks and 
+                balances prevent tyranny. Over two centuries later, the Constitution remains the supreme law of the United States.""",
             ]
         }
     ]
-    max_samples = 200000  # Increased for better coverage
+    max_samples = 100000  # Reduced to manage disk space
     
     # System
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -308,22 +298,19 @@ def train():
                 dataset = load_dataset(
                     dataset_config['name'],
                     dataset_config['subset'],
-                    split=dataset_config['split'],
-                    trust_remote_code=True
+                    split=dataset_config['split']
                 )
             # Handle different dataset configurations
             elif 'config' in dataset_config:
                 dataset = load_dataset(
                     dataset_config['name'],
                     dataset_config['config'],
-                    split=dataset_config['split'],
-                    trust_remote_code=True
+                    split=dataset_config['split']
                 )
             else:
                 dataset = load_dataset(
                     dataset_config['name'],
-                    split=dataset_config['split'],
-                    trust_remote_code=True
+                    split=dataset_config['split']
                 )
             
             # Extract texts
