@@ -31,6 +31,7 @@ class Mamba2Config:
         vocab_size: Vocabulary size for embeddings
         device_type: Type of device to run on
         dtype: Data type for model parameters
+        max_seq_len: Maximum sequence length (8k tokens)
     """
     d_model: int
     depth: int
@@ -40,7 +41,7 @@ class Mamba2Config:
     vocab_size: int = 50257  # GPT-2 vocab size
     device_type: DeviceType = DeviceType.CPU
     dtype: torch.dtype = torch.float32
-    max_seq_len: int = 512
+    max_seq_len: int = 8192  # 8k context length
 
     def __post_init__(self):
         """Validate configuration parameters."""
@@ -263,6 +264,7 @@ def create_mamba2_model(
     d_model: int = 256,
     depth: int = 6,
     vocab_size: int = 50257,
+    max_seq_len: int = 8192,
     device: str = "cpu"
 ) -> Mamba2LM:
     """Create a Mamba-2 language model.
@@ -271,6 +273,7 @@ def create_mamba2_model(
         d_model: Model dimension
         depth: Number of layers
         vocab_size: Vocabulary size
+        max_seq_len: Maximum sequence length (8k tokens)
         device: Device to place model on
         
     Returns:
@@ -280,6 +283,7 @@ def create_mamba2_model(
         d_model=d_model,
         depth=depth,
         vocab_size=vocab_size,
+        max_seq_len=max_seq_len,
         device_type=DeviceType.GPU if device == "cuda" else DeviceType.CPU
     )
     
@@ -289,5 +293,6 @@ def create_mamba2_model(
     # Count parameters
     n_params = sum(p.numel() for p in model.parameters())
     print(f"Created Mamba-2 model with {n_params:,} parameters")
+    print(f"Max sequence length: {max_seq_len} tokens")
     
     return model
